@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace Catalog.API {
+namespace Basket.API {
   public class Startup {
     public Startup(IConfiguration configuration) {
       Configuration = configuration;
@@ -24,7 +24,7 @@ namespace Catalog.API {
     public void ConfigureServices(IServiceCollection services) {
       services.AddControllers();
       services.AddSwaggerGen(c => {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
       });
     }
 
@@ -33,7 +33,7 @@ namespace Catalog.API {
       if (env.IsDevelopment()) {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1"));
       }
 
       app.UseHttpsRedirection();
