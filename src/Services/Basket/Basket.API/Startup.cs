@@ -1,14 +1,10 @@
 using Basket.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using StackExchange.Redis;
-using System;
-using System.Threading.Tasks;
 
 namespace Basket.API {
   public class Startup {
@@ -21,8 +17,8 @@ namespace Basket.API {
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services) {
       services.AddStackExchangeRedisCache(options => {
-        options.Configuration = Configuration.GetValue<string>("CacheSettings:RedisConnectionString");
-        options.InstanceName = Configuration.GetValue<string>("CacheSettings:RedisInstanceName");
+        options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+        options.InstanceName = Configuration.GetValue<string>("CacheSettings:InstanceName");
       });
 
       services.AddScoped<IBasketRepository, BasketRepository>();

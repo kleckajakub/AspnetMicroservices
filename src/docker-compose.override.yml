@@ -6,6 +6,12 @@
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+        
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
       
   catalog.api:
     container_name: catalog.api
@@ -16,14 +22,14 @@
       - catalogdb
     ports:
       - "8000:80"
-        
-  catalog.api-1:
-    container_name: catalog.api-1
+  
+  basket.api:
+    container_name: basket.api
     environment:
         - ASPNETCORE_ENVIRONMENT=Development        
-        - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+        - "CacheSettings:RedisConnectionString=basketdb:6379,abortConnect=false,connectTimeout=30000,responseTimeout=30000,syncTimeout=30000,allowAdmin=true"
     depends_on: 
-      - catalogdb
+      - basketdb
     ports:
-      - "8011:80"
+      - "8031:80"
       
