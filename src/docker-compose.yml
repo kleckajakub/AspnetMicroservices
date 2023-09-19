@@ -5,6 +5,9 @@
   basketdb:
     image: redis:alpine
     
+  portainer:
+    image: portainer/portainer-ce
+    
   catalog.api:
     image: catalog.api
     build:
@@ -19,4 +22,5 @@
 
 volumes:
   mongo_data:
+  portainer_data:
     
