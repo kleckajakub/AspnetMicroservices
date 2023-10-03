@@ -30,7 +30,7 @@
     image: discount.api
     build:
       context: .
-      dockerfile: Discount.API/Dockerfile
+      dockerfile: Services/Discount/Discount.API/Dockerfile
 
 volumes:
   mongo_data:
