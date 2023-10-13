@@ -28,7 +28,7 @@ namespace Basket.API {
 
       var discountServiceUrl = Configuration["GrpcSettings:DiscountUrl"];
       services.AddGrpcClient<DiscountService.DiscountServiceClient>(o => o.Address = new Uri(discountServiceUrl));
-      services.AddScoped<DiscountGrpcService, DiscountGrpcService>();
+      services.AddScoped<DiscountGrpcService>();
 
       services.AddControllers();
       services.AddSwaggerGen(c => {
